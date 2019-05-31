@@ -38,7 +38,7 @@ class Node2Vec():
         X = []
         y1,y2,y3,y4 = [],[],[],[]
         for i in range(len(walks)):
-            if len(i)%1000==0:
+            if i%1000==0:
                 print('Progress Generating Skip-Grams: {0}%'.format(100*(i/len(walks))))
             temp_X = [0] * len(self.node_dict)
             temp_y1 = [0] * len(self.node_dict)
