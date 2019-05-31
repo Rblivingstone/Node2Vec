@@ -60,7 +60,7 @@ class Node2Vec():
                 y2.append(temp_y2)
                 y3.append(temp_y3)
                 y4.append(temp_y4)
-        return np.array(X),np.array(y1),np.array(y2),np.array(y3),np.array(y4)
+        return np.array(X).reshape(1,-1),np.array(y1).reshape(1,-1),np.array(y2).reshape(1,-1),np.array(y3).reshape(1,-1),np.array(y4).reshape(1,-1)
     
     def build_model(self,hidden_units=2):
         input_nodes = Input(shape=(len(self.node_dict),))
@@ -72,7 +72,7 @@ class Node2Vec():
         self.train_model = Model(input_nodes,[output_nodes1,output_nodes2,output_nodes3,output_nodes4])
         self.vector_model = Model(input_nodes,hidden_layer)
         sgd = optimizers.SGD(lr=0.1, decay=1e-6, momentum=0.09, nesterov=True)
-        self.train_model.compile(loss='binary_crossentropy',
+        self.train_model.compile(loss='categorical_crossentropy',
               optimizer=sgd,
               metrics=['acc'])
         
