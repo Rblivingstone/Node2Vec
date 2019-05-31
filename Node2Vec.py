@@ -50,9 +50,9 @@ class Node2Vec():
                     temp_y1[walks[i][j-1]] = 1
                 if j>1:
                     temp_y2[walks[i][j-2]] = 1
-                if j<9:
-                    temp_y3[walks[i][j+2]] = 1
                 if j<8:
+                    temp_y3[walks[i][j+2]] = 1
+                if j<7:
                     temp_y4[walks[i][j+1]] = 1
                 temp_X[walks[i][j]] = 1
                 X.append(temp_X)
